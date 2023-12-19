@@ -4,14 +4,19 @@ CHIP Log2
     OUT out[16];
     
     PARTS:
-    
+
+    // broji uzastopne nule
     Clzv2(a=a , out=v);
 
+    // negira broj uzastopnih bitova kako bi mogli oduzeti
     Not16(in=v , out= nv1);
     Add16(a=nv1, b[0]=true, b[1..15]=false, out=nv);
-    Add16(a[0..3]=true, a[4..15]=false, b=nv , out = reza);
-    And(a=a[15], b=true, out=p);
 
+    // oduzima uzastopni broj bitova od ukupnog broja
+    Add16(a[0..3]=true, a[4..15]=false, b=nv , out = reza);
+
+    // provjerava je li input poz ili neg
+    And(a=a[15], b=true, out=p);
     Mux16(a=reza ,b=true ,  sel=p , out=out);
     
 }
