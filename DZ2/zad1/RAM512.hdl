@@ -3,8 +3,10 @@ CHIP RAM512 {
     OUT out[16];
 
     PARTS:
-
+// DMux8Way dijeli load na 8 dijelova ovisno o selektoru adrese
 DMux8Way(in=load,sel=addr[6..8],a=l1,b=l2,c=l3,d=l4,e=l5,f=l6,g=l7,h=l8);
+
+// RAM64 dijeli rad memorije na manje dijelove kako bi stovrili RAM512
 RAM64(in=in, load=l1,address=addr[0..5], out=out1);
 RAM64(in=in, load=l2,address=addr[0..5], out=out2);
 RAM64(in=in, load=l3,address=addr[0..5], out=out3);
@@ -13,5 +15,7 @@ RAM64(in=in, load=l5,address=addr[0..5], out=out5);
 RAM64(in=in, load=l6,address=addr[0..5], out=out6);
 RAM64(in=in, load=l7,address=addr[0..5], out=out7);
 RAM64(in=in, load=l8,address=addr[0..5], out=out8);
-Mux8Way16(a=out1, b=out2, c=out3, d=out4, e=out5, f=out6, g=out7, h=out8,sel=addr[6..8], out=out);
+
+// Mux8Way16 odabire između rezultata RAM64 blokova ovisno o selektoru adrese
+Mux8Way16(a=out1, b=out2, c=out3, d=out4, e=out5, f=out6, g=out7, h=out8, sel=addr[6..8], out=out);
 }
