@@ -4,11 +4,11 @@ M=0
 
 (ZERO)
 @0
-D=M     ;Učitaj vrijednost s memorijske lokacije 0 u D
+D=M     //Učitaj vrijednost s memorijske lokacije 0 u D
 @ONE
-D;JLT   ;Skoči na ONE ako je D manje od 0
+D;JLT   //Skoči na ONE ako je D manje od 0
 @5
-M=M+D   ;Dodaj D na vrijednost na memorijskoj lokaciji 5
+M=M+D   //Dodaj D na vrijednost na memorijskoj lokaciji 5
 
 (ONE)
 @1
