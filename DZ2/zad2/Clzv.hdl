@@ -4,8 +4,12 @@ CHIP Clzv
     OUT out[16];
     
     PARTS:
+
+    // provjerava je li msb 0 
     Mux(a=true, b=false, sel=a[15], out=p0);
 
+
+    // provjerava je li next bit isto nula ako je vraca true
     NOR(a=a[15], b=a[14], out=out1);
     Mux(a=true , b=false , sel=out1, out=p1);
 
@@ -40,7 +44,7 @@ CHIP Clzv
     NOR (a=p14 , b=a[0], out=out15);
     Mux(a=true , b=false , sel=out15, out=p15);
 
-
+    // counter 
     Add16(a[0]=out1, a[1..15]=false, b[1..15]=false, b[0]=out2, out=res1);
     Add16(a=res1, b[1..15]=false, b[0]=out3, out=res2);
     Add16(a=res2, b[1..15]=false, b[0]=out4, out=res3);
