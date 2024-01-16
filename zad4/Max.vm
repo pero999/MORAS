@@ -1,0 +1,26 @@
+function Max.max 1
+	push argument 0 
+	pop local 0
+	push local 0
+	push argument 1
+	gt 
+
+	if-goto bLessThanA
+	push argument 1
+	pop local 0 
+
+label bLessThanA
+	
+	push local 0
+	push argument 2
+	gt 
+
+	if-goto maxEnd
+	push argument 2
+	pop local 0
+
+label maxEnd
+	push local 0
+	return
+
+
